@@ -83,7 +83,7 @@ class PivotalTracker
     parse_response(response, 'stories')
   end
 
-  def get_story(project_id, story_id)
+  def get_project_story(project_id, story_id)
     response = self.class.get("/projects/#{project_id}/stories/#{story_id}")
     raise_errors(response)
     parse_response(response, 'story')    

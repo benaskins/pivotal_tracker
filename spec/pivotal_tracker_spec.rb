@@ -134,7 +134,7 @@ describe PivotalTracker do
 
       it "should get a specific story by pivotal tracker id" do
         stub_get('/projects/1/stories/12', 'story.xml')
-        story = @tracker.get_story(1, 12)
+        story = @tracker.get_project_story(1, 12)
         story.name.should == "Fire torpedoes"
       end
       
