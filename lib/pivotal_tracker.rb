@@ -83,6 +83,12 @@ class PivotalTracker
     parse_response(response, 'stories')
   end
 
+  def get_story(project_id, story_id)
+    response = self.class.get("/projects/#{project_id}/stories/#{story_id}")
+    raise_errors(response)
+    parse_response(response, 'story')    
+  end
+
   def add_project_story(project_id, story)
     response = self.class.post("/projects/#{project_id}/stories", :body => {:story => story})
     raise_errors(response)
