@@ -74,7 +74,7 @@ class PivotalTracker
   end
   
   def get_all_project_stories(project_id, options = {})
-    if options[:filter]
+    if options[:filter] && options[:filter].is_a?(Hash)
       options[:filter] = options[:filter].inject([]) {|f,(key,value)| f << "#{key}:#{value}"}.join(' ')
     end
 
