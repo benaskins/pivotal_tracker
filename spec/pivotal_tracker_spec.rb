@@ -131,6 +131,12 @@ describe PivotalTracker do
         stories = @tracker.get_all_project_stories(1)
         stories.first.owned_by.should == 'Montgomery Scott'
       end
+
+      it "should get a specific story by pivotal tracker id" do
+        stub_get('/projects/1/stories/12', 'story.xml')
+        story = @tracker.get_project_story(1, 12)
+        story.name.should == "Fire torpedoes"
+      end
       
       it "should get all stories for a project based on a given filter hash" do
         stub_get("/projects/1/stories\?filter=type%3Afeature", 'stories.xml')
